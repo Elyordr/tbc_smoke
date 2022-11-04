@@ -1,0 +1,41 @@
+---
+- name: Open the test-admin website
+  uid: 10f7753e-7199-45f7-b48c-53b40fd80fd7
+  parameters: []
+  body_hash: 89aaab49659842bf35bb118a1fe8d9a8
+- name: Login key
+  uid: 421220b9-bb20-43be-8134-0050b1b9cd88
+  parameters: []
+  body_hash: 7c1a99b0121c11d1b0160c575f665b8a
+- name: First step loan key
+  uid: 8f8ba06f-65b9-45af-8fa6-7df1661863bf
+  parameters: []
+  body_hash: c2c8b3832aae6c6d6a5846206fc4cb84
+- name: Second step loan key
+  uid: d7ff1fc4-946f-4ac8-86ca-7704374ab9f0
+  parameters: []
+  body_hash: 324e40b968dbaa3c84790d02ad71e2b9
+- name: Finished second step loan key
+  uid: 361591aa-4b33-4b21-917d-3f684daf9608
+  parameters: []
+  body_hash: 4e8cff23dd6e48abda3fed31c9427973
+- name: Finished third step loan key
+  uid: 2c3e5bbf-9bd5-495b-ba13-f13da223e8e9
+  parameters: []
+  body_hash: c800ae340f757ce8526b0a7d1c851a83
+- name: Finished fourth step loan key
+  uid: c20f02c5-8bfa-4e86-b93e-6924f005034f
+  parameters: []
+  body_hash: 99c144e1449a44af2b78096bf83258e7
+- name: Finished fifth step loan key
+  uid: b3b5d94f-5294-4b9a-a7b1-37d035009510
+  parameters: []
+  body_hash: 0e8b34bf80eeb3096c30c484969d017b
+- name: Check from admin
+  uid: 73709cd7-179f-423b-8aba-ca3ffc965291
+  parameters: []
+  body_hash: f60e187b7beb84402033ade09e3a7a85
+- name: OTP of fourth step
+  uid: 2526709c-38d5-44ac-8a3e-f4016fd50406
+  parameters: []
+  body_hash: c816f7635fd7fce62817d08869e67f87
