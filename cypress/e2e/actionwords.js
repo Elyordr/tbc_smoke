@@ -1,5 +1,7 @@
 const url = 'https://test-new-agent.tbcfin.uz/'
 
+const get = require('./smoke_testing/Loan creating/dadaxon.cy')
+
 exports.Actionwords = {
   openTheTestadminWebsite: function () {
     // TODO: Implement action: "Open the test-admin website"
@@ -29,28 +31,61 @@ exports.Actionwords = {
     cy.get('.MuiPaper-root').contains('Продолжить').click()
     // TODO: Implement result: "Should open the main page of new-agent"
     // throw 'Not implemented';
+    cy.viewport('iphone-x')
   },
   firstStepLoanKey: function () {
     this.loginKey();
+    cy.viewport('iphone-x')
     // TODO: Implement action: "Create новая заявка"
+    cy.contains('Новая заявка').click()
+    cy.viewport('macbook-16')
     // TODO: Implement result: "Should open Основные сведения typing page"
-    throw 'Not implemented';
+    cy.contains('Основные сведения ')
   },
   secondStepLoanKey: function () {
     this.loginKey();
     // TODO: Implement action: "Create новая заявка"
+    cy.contains('Новая заявка').click()
+    cy.viewport('iphone-x')
     // TODO: Implement result: "Should open Основные сведения typing page"
+    cy.contains('Основные сведения ')
     // TODO: Implement action: "Correctly fill all fields and attach correct photo, then continue"
+    cy.get('input[name="phone_number"]').type(get.phone)
+    cy.get('input[placeholder="dd-mm-yyyy"]').type(get.birth)
+    cy.get('input[name="passport_series"]').type(get.passportSeria)
+    cy.get('input[name="passport_number"]').type(get.passportNumber)
+    cy.get('label[class="add-block block"]').selectFile('DSC_0037.JPG')
+    cy.wait(2000)
+    cy.contains('Продолжить').click()
     // TODO: Implement result: "Should open otp typing page"
+
     // TODO: Implement action: "Enter correct otp and continue"
+    cy.get('input[aria-label="Please enter verification code. Digit 1"]').type('3')
+    cy.get(':nth-child(2) > input').type('1')
+    cy.get(':nth-child(3) > input').type('1')
+    cy.get(':nth-child(4) > input').type('5')
+    cy.contains('Продолжить').click()
+    cy.intercept('GET', 'https://test-api-agent.tbcfin.uz/v1/get-family-statuses').as('get-family-status')
+    cy.wait('@get-family-status', {timeout: 10000})
     // TODO: Implement result: "Should open Сведения о клиенте page"
-    throw 'Not implemented';
+    cy.contains('Сведения о клиенте')
   },
   finishedSecondStepLoanKey: function () {
     this.secondStepLoanKey();
+    cy.viewport('iphone-x')
     // TODO: Implement action: "Fill all the fields correctly and continue"
+    cy.get('input[name="card_number"]').type(get.Humo)
+    cy.get('input[name="card_expary"]').type(get.Humo_expire)
+    cy.get('#combo-box-demo').type('неже')
+    cy.contains('Неженат').click()
+    cy.get('input[name="experience"]').type('5')
+    cy.get('input[placeholder="Зарплата"]').type('15000000')
+    cy.get('input[placeholder="Предварительная категория товара"]').type('сма')
+    cy.contains('Смартфоны').click()
+    cy.contains('Продолжить').click()
     // TODO: Implement result: "Should open Scoring loading circle and afetr some time should open third step"
-    throw 'Not implemented';
+    cy.intercept('POST', 'https://test-api-agent.tbcfin.uz/v1/create-agent-history').as('create-agent-history')
+    cy.wait('@create-agent-history', {timeout: 200000})
   },
   finishedThirdStepLoanKey: function () {
     this.finishedSecondStepLoanKey();

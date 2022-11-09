@@ -12,6 +12,7 @@ describe('Return Loans', function () {
   });
   it('Correct loan return creation (without payments)', function () {
     this.actionwords.loginKey();
+    
     // TODO: Implement action: "Go to Возвраты page"
     cy.get('[aria-label="Return"]').click()
     // TODO: Implement result: "Should open Возвраты page with all created returns list"
@@ -26,7 +27,7 @@ describe('Return Loans', function () {
     cy.get('input[placeholder="Номер паспорта"]').type(9796400)
     cy.contains('Продолжить').click()
     // TODO: Implement result: "Should open details of the chosen loan, with products client had chosen (without payments)"
-    cy.wait(2000)
+    cy.wait(4000)
     cy.contains('998480273-499')
     // TODO: Implement action: "Tap on Продолжить"
     cy.contains('Продолжить').click()
