@@ -10,9 +10,7 @@ describe('First step', function () {
   beforeEach(function () {
     this.actionwords = Object.create(require('../../actionwords.js').Actionwords);
   });
-
  
-
   it('Incorrect loan creation(short passport info in the first step)', function () {
     this.actionwords.firstStepLoanKey();
     // TODO: Implement action: "Fill all fields with incorrect data
