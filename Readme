@@ -1,0 +1,9 @@
+Welcome to the README of TBCfin automation testing!
+
+After clonning the project, run codes below(in the terminal) in the folder of the project
+
+Code for running the all testcases by Cypress Dashboard:
+"npx cypress run --record --key 726a42a0-db0d-4f5d-bd85-6a2ef6faef2f" and open Cypress Dashboard https://dashboard.cypress.io/projects/6h7ut5/runs
+
+Code for running the testcases one by one:
+"npx cypress open"
