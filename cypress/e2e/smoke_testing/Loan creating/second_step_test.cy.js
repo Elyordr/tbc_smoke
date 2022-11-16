@@ -57,7 +57,7 @@ describe('Second step', function () {
     cy.contains('Смартфоны').click()
     // TODO: Implement action: "Tap on Продолжить"
     cy.contains('Продолжить').click()
-    // TODO: Implement result: "Should be error message with Пожалуйста, Введите Номер Карты, Срок Действия Которой Не Истекает В Течение 11 Месяцев."
+    // TODO: Implement result: "Should be error message with Пожалуйста, Введите Номер Карты, Срок Действия Которой Не Истекает В Течение 11 Месяцев."  
     cy.contains('Срок действия карты истек. Пожалуйста, введите действующую карту')
   });
 
