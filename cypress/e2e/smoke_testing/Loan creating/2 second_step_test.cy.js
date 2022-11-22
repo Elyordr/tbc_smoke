@@ -104,13 +104,15 @@ describe('Second step', function () {
     // TODO: Implement action: "Choose any reason and continue"
     cy.contains('Не устраивает сумма').click()
     cy.get('.MuiPaper-root').contains('Продолжить').last().click()
+    cy.wait(5000)
     // TODO: Implement action: "Go to Loans page and look at status of previous loan"
     cy.get('div[class="_item_2xst8_56"]').eq(0)
     cy.contains('Продолжить').click()
     // TODO: Implement result: "Status should be Отменен"
-    .contains('Отменена')
+    cy.viewport('macbook-16')
+    cy.get('tbody[class="CTableBody"] > tr').eq(0).find('td').eq(5).contains('Отменена')
     // TODO: Implement action: "Open that loan and go to second step"
-    cy.get('div[class="_item_2xst8_56"]').eq(0).click()
+    .click()
     // TODO: Implement result: "Data in the second step should not be editable"
     cy.get('.MuiTabs-flexContainer > :nth-child(2)').click()
     cy.get('input[name="card_number"]').should('be.disabled')

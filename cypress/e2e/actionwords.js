@@ -25,6 +25,19 @@ exports.Actionwords = {
     // TODO: Implement action: "Go to Общие сведения and look at Список товаров"
     // TODO: Implement result: "All chosen products should be in the list"
   },
+  openAdminPanelsms: function () {
+    cy.visit(admin_url)
+    // TODO: Implement action: "Open the test-admin website"
+    cy.viewport('macbook-16')
+    cy.get('#login').type('admin@mail.ru')
+    cy.get('#password').type('12345678')
+    cy.get('.button').click()
+    cy.contains('Features').click()
+    cy.get('div[class=" search-area flex items-center h-8  mr-4"]').click()
+    cy.get('input[placeholder="Поиск...."]').type('77')
+    cy.wait(3000)
+    cy.get('tbody > tr > td').eq(7).find('input[type="checkbox"]').click()
+  },
   loginKey: function () {
     // TODO: Implement action: "Open the test-new-agent website"
     // cy.viewport('iphone-x')
@@ -68,7 +81,7 @@ exports.Actionwords = {
     cy.get('input[name="passport_series"]').type(get.passportSeria)
     cy.get('input[name="passport_number"]').type(get.passportNumber)
     cy.get('label[class="add-block block"]').selectFile(get.filePath)
-    cy.wait(2000)
+    cy.wait(3000)
     cy.contains('Продолжить').click()
     // TODO: Implement result: "Should open otp typing page"
 
@@ -102,17 +115,6 @@ exports.Actionwords = {
   },
   finishedThirdStepLoanKey: function () {
     this.finishedSecondStepLoanKey();
-    // TODO: Implement result: "In third step should be some options depend on scoring results"
-    cy.get('._success_1f25r_11').contains('Успешно!')
-    // TODO: Implement action: "Choose any option and continue"
-    cy.get('input[name="radio-buttons"]').eq(0).click()
-    cy.contains('Продолжить').click()
-    // TODO: Implement result: "Should open the fourth step"
-    // TODO: Implement action: "Open the Admin website > Все рассрочки > Choose previous loan > История изменений"
-    // TODO: Implement action: "Go back to the loan in new-agent"
-  },
-  finishedFourthStepLoanKey: function () {
-    this.finishedThirdStepLoanKey();
     // this.actionwords.finishedThirdStepLoanKey();
     // TODO: Implement action: "Fill all the fields correctly"
     cy.wait(3000)
@@ -131,7 +133,7 @@ exports.Actionwords = {
     cy.contains('ТОШКЕНТ ШАХРИ').click()
     cy.get('input[placeholder="Улица, дом, квартира"]').type('Yunusabad')
     cy.get('input[placeholder="Выберите день оплаты"]').type('1')
-    cy.contains('10').click()
+    cy.get('#combo-box-demo-option-0').click()
     cy.get('input[placeholder="Район фактического проживания"]').type('сир')
     cy.contains('СИРГАЛИ ТУМАНИ').click()
     cy.get('input[name="children_amount"]').type('0')
@@ -142,7 +144,7 @@ exports.Actionwords = {
     // TODO: Implement action: "Tap on Продолжить"
     cy.contains('Продолжить').click()
     // TODO: Implement result: "Should open Scoring loading circle and after some time should open fifth step"
-    cy.intercept('POST', 'https://test-api-agent.tbcfin.uz/v1/get-card-otp').as('get-card-otp')
+    cy.intercept('POST', 'https://test-api-agent.tbcfin.uz/v1/create-agent-history').as('get-card-otp')
     cy.wait('@get-card-otp', {timeout: 200000})
     // TODO: Implement action: "Look at Рекомендация агента по клиенту and Грин карта inputs"
     // TODO: Implement result: "They defaultly should be green with Рекомендую and Нет, respectively"
@@ -151,6 +153,17 @@ exports.Actionwords = {
     // TODO: Implement action: "Typre correct OTP from phone sms"
     // TODO: Implement result: "Should open the fifth step"
     // TODO: Implement action: "Go back to the loan"
+  },
+  finishedFourthStepLoanKey: function () {
+    this.finishedThirdStepLoanKey();
+    // TODO: Implement result: "In third step should be some options depend on scoring results"
+    cy.get('._success_1f25r_11').contains('Успешно!')
+    // TODO: Implement action: "Choose any option and continue"
+    cy.get('input[name="radio-buttons"]').eq(0).click()
+    cy.contains('Продолжить').click()
+    // TODO: Implement result: "Should open the fourth step"
+    // TODO: Implement action: "Open the Admin website > Все рассрочки > Choose previous loan > История изменений"
+    // TODO: Implement action: "Go back to the loan in new-agent"
   },
   finishedFifthStepLoanKey: function () {
     this.finishedFourthStepLoanKey();
